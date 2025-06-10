@@ -8,7 +8,20 @@ from settings import MODEL_NAME, MAX_TOKENS, TEMPERATURE, SYSTEM_PROMPT, MESSAGE
 # Load environment variables from .env file
 load_dotenv()
 
+# Set page config
+st.set_page_config(page_title=MESSAGES["TITLE"])
+
 st.title(MESSAGES["TITLE"])
+
+# Hide Streamlit menu and footer
+hide_streamlit_style = """
+            <style>
+            header {visibility: hidden;}
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 # Initialize session state
 if 'last_analysis_response' not in st.session_state:
